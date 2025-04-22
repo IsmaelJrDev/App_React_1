@@ -1,2 +1,2 @@
 # App_React_1
-Aplicacion con React en aprendizaje
+Aplicacion de Practica con React
