@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react'; // Importamos useState para poder usarlo
+import Header from './components/Header';
+import UseSelector from './components/UserSelector';
+import TaskList from './components/TaskList';
 
-function App() {
-  const [count, setCount] = useState(0)
+const App = ()=>{
 
+  // Creación de usuarios
+  const users =[
+    {id:1, username:'Ismael'},
+    {id:2, username:'Daniel'},
+    {id:3, username:'Jonathan'},
+    {id:4, username:'Joel'},
+    {id:5, username:'Mario'},
+  ]
+
+  // Creación de tareas
+  const allTasks ={
+    1:["Hacer ejecicio", "Desplegar app en React", "Tumbar produccion"],
+    2:["Depslegar app en angular", "Aprender PHP", "Hacer la tarea"],
+    3:["Hacer API Dijkstra", "Desplegar app en Render"],
+    4:["Manual de practicas de REACT", "Aprender MYSQL", "Hacer cursos de Udemy"],
+    5:["Aprender ingles", "Desarrollar IA", "Crear una aplicacion REACT"],
+  }
+
+  // Estado para almacenar el usuario actual
+  const [currentUserId, setCurrentUserId] = useState(1);
+
+  // Función para cambiar el usuario
+  const currentUser = users.find((usr)=>usr.id == currentUserId)
+
+  // Función para guardar la tarea del usuario anterior
+  const tasks = allTasks[currentUserId];
+
+
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="bg-indigo-100 w-screen h-screen p-4" >
+      <Header user = {currentUser}/>
+      <section className="bg-white shadow rounded mt-4 p-2">
+      <UseSelector users = {users} newUser = {setCurrentUserId}/>
+      <TaskList tasks = {tasks} />
+      </section>
+    </div>
   )
 }
 
-export default App
+export default App;
