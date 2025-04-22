@@ -34,3 +34,8 @@ npm install
 # Ejecutar el proyecto
 npm run dev
 ```
+
+De igual manera vamos a instalar **Tailwind**, para esto vamos a ingresar a la página oficial: [https://tailwindcss.com/docs/installation/using-vite](https://tailwindcss.com/docs/installation/using-vite) y vamos a buscar el apartado de **Installation**, buscamos el sigiuente comando y lo ingresamos en la terminal:
+```bash
+npm install tailwindcss @tailwindcss/vite
+```
